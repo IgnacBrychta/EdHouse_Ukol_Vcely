@@ -57,20 +57,19 @@ namespace EdHouse_Ukol_Vcely
                     bool isOnEdge = onTop || onBottom || onLeft || onRight;
                     // assign only if tree is on edge
                     tree.isVisible = isOnEdge ? isOnEdge : tree.isVisible;
-                    //if (!onTop && !onBottom && onLeft && !onRight) 
                     switch ((onTop, onBottom, onLeft, onRight))
                     {
                         case (false, false, true, false):
-                            //MarkVisibleTreesFromLeft(i);
+                            MarkVisibleTreesFromLeft(i);
                             break;
                         case (false, false, false, true):
-                            //MarkVisibleTreesFromRight(i);
+                            MarkVisibleTreesFromRight(i);
                             break;
                         case (true, false, false, false):
                             MarkVisibleTreesFromTop(j);
                             break;
                         case (false, true, false, false):
-                            //MarkVisibleTreesFromBottom(j);
+                            MarkVisibleTreesFromBottom(j);
                             break;
                     }
                 }
@@ -79,62 +78,77 @@ namespace EdHouse_Ukol_Vcely
 
         private void MarkVisibleTreesFromLeft(int row)
         {
+            int highestTree = 0;
             for (int i = 1; i < width - 1; i++)
             {
                 Tree currentTree = trees[row, i];
                 Tree treeToLeft = trees[row, i - 1];
-                if (currentTree.height > treeToLeft.height)
+                if (treeToLeft.height > highestTree)
+                {
+                    highestTree = treeToLeft.height;
+                }
+                if (highestTree < currentTree.height)
                 {
                     currentTree.isVisible = true;
                 }
-                else if (currentTree.height == treeToLeft.height) continue;
-                else return;
+                if (highestTree == 9) return;
             }
         }
 
         private void MarkVisibleTreesFromRight(int row)
         {
+            int highestTree = 0;
             for (int i = width - 2; i > 0; i--)
             {
                 Tree currentTree = trees[row, i];
                 Tree treeToRight = trees[row, i + 1];
-                if (currentTree.height > treeToRight.height)
+                if (treeToRight.height > highestTree)
+                {
+                    highestTree = treeToRight.height;
+                }
+                if (highestTree < currentTree.height)
                 {
                     currentTree.isVisible = true;
                 }
-                else if (currentTree.height == treeToRight.height) continue;
-                else return;
+                if (highestTree == 9) return;
             }
         }
 
         private void MarkVisibleTreesFromTop(int column)
         {
+            int highestTree = 0;
             for (int i = 1; i < height - 1; i++)
             {
                 Tree currentTree = trees[i, column];
                 Tree treeToTop = trees[i - 1, column];
-                if (currentTree.height > treeToTop.height)
+                if(treeToTop.height > highestTree)
+                {
+                    highestTree = treeToTop.height;
+                }
+                if (highestTree < currentTree.height)
                 {
                     currentTree.isVisible = true;
                 }
-                else if (currentTree.height == treeToTop.height) continue;
-                else return;
+                if (highestTree == 9) return;
             }
         }
 
         private void MarkVisibleTreesFromBottom(int column)
         {
+            int highestTree = 0;
             for (int i = height - 2; i > 0; i--)
             {
-
                 Tree currentTree = trees[i, column];
                 Tree treeToBottom = trees[i + 1, column];
-                if (currentTree.height > treeToBottom.height)
+                if (treeToBottom.height > highestTree)
+                {
+                    highestTree = treeToBottom.height;
+                }
+                if (highestTree < currentTree.height)
                 {
                     currentTree.isVisible = true;
                 }
-                else if (currentTree.height == treeToBottom.height) continue;
-                else return;
+                if (highestTree == 9) return;
             }
         }
 

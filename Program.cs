@@ -2,31 +2,27 @@
 using System.IO;
 using System.Buffers;
 using System.Runtime.InteropServices;
+using System.Diagnostics;
 
 namespace EdHouse_Ukol_Vcely
 {
     internal static class Program
     {
         const int maxInputSize = 10_000;
-        static int width = 5;
-        static int height = 5;
-        static internal int[,] treeHeights = new int[,]
-        {
-            { 3, 0, 3, 7, 3 },
-            { 2, 5, 5, 1, 2 },
-            { 6, 5, 3, 3, 2 },
-            { 3, 3, 5, 4, 9 },
-            { 3, 5, 3, 9, 0 }
-        };
+        static int width;
+        static int height;
         static Forest? forest;
         static void Main(string[] args)
         {
-            Clipboard.SetClipboardText("\r\n"); // 9997
+#warning není výpis do stdout
+            ShowWarning();
             int numOfTrees = GetForestDataSize();
+            Clipboard.SetClipboardText("\r\n"); // 9997
             char[] rawData = GetForestData(numOfTrees);
             int[,] treeHeights = ParseRawData(rawData);
             GenerateForest(treeHeights);
             forest!.DetermineTreeVisibilityFromOutside();
+            Console.Clear();
             for (int i = 0; i < width; i++)
             {
                 for (int j = 0; j < height; j++)
@@ -37,12 +33,19 @@ namespace EdHouse_Ukol_Vcely
             }
             Console.WriteLine($"Sečteno máme {forest.TreesOnEdges} stromů viditelných na okraji a dalších {forest.TreesVisibleInsideForest} uvnitř a celkem tedy {forest.TotalVisibleTrees} stromů viditelných");
             ShowVisibleTrees();
+            var a = 0;
+            Console.ReadKey();
+        }
+
+        static void ShowWarning()
+        {
+            Console.WriteLine("Pro správný chod tohoto programu je doporučeno mít zapnutou historii schránky. Lze pohodlně aktivovat pomocí WinKey+R, zadat \"ms-settings:clipboard\" a potvrdit. Stiskněte libovolné tlačítko pro pokračování.");
             Console.ReadKey();
         }
 
         static char[] GetForestData(int numOfTrees)
         {
-            Console.WriteLine("Vložte seznam");
+            Console.WriteLine("Vložte seznam výšek stromů. Instrukce:\n 1. Zkopírovat seznam přesně jako v zadání\n 2. Vložit (WinKey+V)\n 3. Vložit speciální znak pro nový řádek (WinKey+V; ve schránce se objeví jako prázdné místo.");
             TextReader textIn = Console.In;
             char[] buffer = new char[numOfTrees];
             //textIn.ReadBlock(buffer, 0, maxInputSize);
@@ -53,7 +56,7 @@ namespace EdHouse_Ukol_Vcely
         static int GetForestDataSize()
         {
             int dataSize = 0;
-            Console.WriteLine("Kolik znaků mají vstupní data?");
+            Console.WriteLine("Kolik znaků mají vstupní data?\nNápověda: celkový počet znaků = sloupce * řádky + 2 * řádky - 2\nPříklad: pro les o velikosti 5 × 5 je vkládáno 33 znaků");
             while(!int.TryParse(Console.ReadLine(), out dataSize) || dataSize > maxInputSize)
             {
                 Console.WriteLine("Neplatný vstup.");
