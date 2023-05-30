@@ -1,14 +1,17 @@
-# EdHouse_Ukol_Vcely
-Stáž 2023 - Zachraň Včelku Máju!
+
+# EdHouse úkol pro stážisty - včely v lese
+### Stáž 2023 - Zachraň Včelku Máju!
 Božínku! Včelka Mája a celé její společenstvo včel přišli o domov! Musíš jí a nespočtu jejích včelích sourozenců pomoci najít vhodné místo pro stavbu nového úlu. Naštestí nemusíš hledat v celém širém kraji. Včelkám se totiž zamlouvá místo zvané Pravidelný háj, kde jsou stromy vysázeny v pravidelné mřížce. Tvým úkolem je zjistit, zda je Pravidelný háj pro včelstvo bezpečný. Máju zajíma kolik stromů Pravidelného háje je možné spatřit z jeho vnějšku, díváme-li se výhradně podél řad, či sloupců. 
 Mapování Pravidelného háje je pro včelky hračka. Rozletí se do všech směrů a nezbývá než počkat co nám povědí. Aby Ti Mája mohla dobře vysvětlit jak máš postupovat, nakreslila ti v mezičase nejdříve malou mapu jako příklad:
 Příklad
 
-30373<br><\br>
-25512<br><\br>
-65332<br><\br>
-33549<br><\br>
-35390<br><\br>
+|   | A | B | C | D | E |
+|---|---|---|---|---|---|
+| a | 3 | 0 | 3 | 7 | 3 |
+| b | 2 | 5 | 5 | 1 | 2 |
+| c | 6 | 5 | 3 | 3 | 2 |
+| d | 3 | 3 | 5 | 4 | 9 |
+| e | 3 | 5 | 3 | 9 | 0 
 
 Každý strom je reprezentován jednou číslicí, jejíž hodnota odpovída výšce stromu, kde 0 je nejmenší a 9 je nejvyšší
 Strom je viditelný pokud jsou všechny ostatní stromy mezi ním a okrajem Pravidelného háje kratší. Uvažujte pouze stromy ve stejné řadě, nebo sloupci. Zjednodušeně řečeno: dívejte se pouze nahoru, dolů, doleva nebo doprava směrem od daného stromu.
@@ -29,11 +32,11 @@ Kolik stromů Pravidelného háje můžeme spatřit zvenku?
 Pokyny
 -	Zvolte jazyk a prostředí dle preference – C++ / C# / Java / Python / Rust / JavaScript
 -	Napište program, který
-  -	Načte data ze standardního vstupu (STDIN)
-  - co nejefektivněji vyřeší výše popsaný úkol
-  -	Vypíše odpověď na standardní výstup (STDOUT)
+	  -	Načte data ze standardního vstupu (STDIN)
+	  - co nejefektivněji vyřeší výše popsaný úkol
+	  -	Vypíše odpověď na standardní výstup (STDOUT)
 -	Na adresu specifikovanou v průvodním e-mailu, nejpozději do data uvedeného tamtéž zašlete e-mail, obshaující
-  - V textu emailu – popis Vámi zvoleného prostředí a zejména instrukce k přeložení a spuštění vašeho programu
-  - V textu emailu - popis použitého algoritmu
-  - V textu emailu – vypočtenou hodnotu
-  - V příloze pak přeložitelný (či interpretovatelný) program ve formě zdrojových kódu a všech dalších potřebných projektových souborů.
+	  - V textu emailu – popis Vámi zvoleného prostředí a zejména instrukce k přeložení a spuštění vašeho programu
+	  - V textu emailu - popis použitého algoritmu
+	  - V textu emailu – vypočtenou hodnotu
+	  - V příloze pak přeložitelný (či interpretovatelný) program ve formě zdrojových kódu a všech dalších potřebných projektových souborů.
