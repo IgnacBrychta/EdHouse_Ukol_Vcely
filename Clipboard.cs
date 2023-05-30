@@ -2,6 +2,8 @@
 using System.Runtime.InteropServices;
 using System.Text;
 
+namespace EdHouse_Ukol_Vcely;
+
 static class Clipboard
 {
     [DllImport("user32.dll")]
