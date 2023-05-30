@@ -5,6 +5,7 @@ internal class Forest
     internal Tree[,] trees;
     internal readonly int width;
     internal readonly int height;
+    const int maxTreeHeight = 9;
     public int TotalVisibleTrees { get => GetEnumerator().Count(tree => tree.isVisible); }
     public int TreesOnEdges { get => 2 * width + 2 * (height - 2); }
     public int TreesVisibleInsideForest { get => TotalVisibleTrees - TreesOnEdges; }
@@ -82,7 +83,7 @@ internal class Forest
             {
                 currentTree.isVisible = true;
             }
-            if (highestTree == 9) return;
+            if (highestTree == maxTreeHeight) return;
         }
     }
 
@@ -101,7 +102,7 @@ internal class Forest
             {
                 currentTree.isVisible = true;
             }
-            if (highestTree == 9) return;
+            if (highestTree == maxTreeHeight) return;
         }
     }
 
@@ -120,7 +121,7 @@ internal class Forest
             {
                 currentTree.isVisible = true;
             }
-            if (highestTree == 9) return;
+            if (highestTree == maxTreeHeight) return;
         }
     }
 
@@ -139,7 +140,7 @@ internal class Forest
             {
                 currentTree.isVisible = true;
             }
-            if (highestTree == 9) return;
+            if (highestTree == maxTreeHeight) return;
         }
     }
 
