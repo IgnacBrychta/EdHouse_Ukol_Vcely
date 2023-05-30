@@ -1,11 +1,4 @@
-﻿using System.Text;
-using System.IO;
-using System.Buffers;
-using System.Runtime.InteropServices;
-using System.Diagnostics;
-using System.Net.Http.Headers;
-
-namespace EdHouse_Ukol_Vcely;
+﻿namespace EdHouse_Ukol_Vcely;
 
 internal static class Program
 {
@@ -13,7 +6,9 @@ internal static class Program
     static int width;
     static int height;
     static Forest? forest = null;
-    static void Main(string[] args)
+    const char visibleTree = 'T';
+    const char hiddenTree = '?';
+	static void Main(string[] args)
     {
         Console.Title = "EdHouse úkol pro stážisty";
         ShowWarning();
@@ -24,9 +19,12 @@ internal static class Program
         GenerateForest(treeHeights);
         forest!.DetermineTreeVisibilityFromOutside();
         Console.Clear();
-		Console.Out.WriteLine($"\u001b[91m Sečteno máme {forest.TreesOnEdges} stromů viditelných na okraji a dalších {forest.TreesVisibleInsideForest} uvnitř a celkem tedy {forest.TotalVisibleTrees} stromů viditelných. \u001b[0m");
         ShowVisibleTrees();
-		Console.In.ReadLine();
+		Console.Out.WriteLine($"\u001b[91m Sečteno máme {forest.TreesOnEdges} stromů viditelných na okraji a dalších {forest.TreesVisibleInsideForest} uvnitř a celkem tedy {forest.TotalVisibleTrees} stromů viditelných. \u001b[0m\nStisknětě libovolné tlačítko pro pokračování.");
+		Console.ReadKey(true);
+        ShowVisibleTreesWithColor();
+        Console.WriteLine("\nStiskněte libovolné tlačítko pro ukončení programu.");
+        Console.ReadKey(true);
 	}
 
     static void ShowWarning()
@@ -37,7 +35,7 @@ internal static class Program
 
     static char[] GetForestData(int numOfTrees)
     {
-        Console.Out.WriteLine("\nVložte seznam výšek stromů. Instrukce:\n 1. Zkopírovat seznam přesně jako v zadání\n 2. Vložit (WinKey+V)\n 3. Vložit speciální znak pro nový řádek (WinKey+V; ve schránce se objeví jako prázdné místo.");
+        Console.Out.WriteLine("\nVložte seznam výšek stromů. Instrukce:\n 1. Zkopírovat seznam přesně jako v zadání\n 2. Vložit (WinKey+V)\n 3. Vložit speciální znak pro nový řádek (WinKey+V; ve schránce se objeví jako prázdné místo.)");
         TextReader textIn = Console.In;
         char[] buffer = new char[numOfTrees];
         int _ = textIn.ReadBlock(buffer, 0, numOfTrees);
@@ -98,10 +96,11 @@ internal static class Program
         forest = new Forest(width, height, treeHeights);
     }
 
-    static void ShowVisibleTrees()
+    static void ShowVisibleTreesWithColor()
     {
         TextWriter textWriter = Console.Out;
-        for (int i = 0; i < width; i++)
+		Console.Out.WriteLine($"\nZobrazení s barvami:\n\"{visibleTree}\" Strom; \"{hiddenTree}\" strom nelze vidět\n");
+		for (int i = 0; i < width; i++)
         {
             for (int j = 0; j < height; j++)
             {
@@ -114,10 +113,26 @@ internal static class Program
                 {
                     Console.BackgroundColor = ConsoleColor.Red;
                 }
-				textWriter.Write(tree.isVisible ? 'T' : 'F');
+				textWriter.Write(tree.isVisible ? visibleTree : hiddenTree);
             }
 			textWriter.WriteLine();
         }
         Console.BackgroundColor = default;
     }
+
+	static void ShowVisibleTrees()
+	{
+        TextWriter textWriter = Console.Out;
+        Console.Out.WriteLine($"Zobrazení v obyčejném textu:\n\"{visibleTree}\" Strom; \"{hiddenTree}\" strom nelze vidět\n");
+		for (int i = 0; i < width; i++)
+		{
+			for (int j = 0; j < height; j++)
+			{
+				Tree tree = forest![i, j];
+				textWriter.Write(tree.isVisible ? visibleTree : hiddenTree);
+			}
+			textWriter.WriteLine();
+		}
+		Console.BackgroundColor = default;
+	}
 }
