@@ -32,8 +32,8 @@ Sečteno máme 16 stromů viditelných na okraji a dalších 5 uvnitř a celkem 
 Vstupní data
 Najednou slyšíš bzučení. Jsou to včelky, které se postupně slétají k Máji a šeptají ji svá pozorování. Netrvá dlouho než ti Mája předá skutečnou mapu pravidelného háje (textový soubor vložený do tohoto MS Word dokumentu)
  
-Kolik stromů Pravidelného háje můžeme spatřit zvenku?
-Pokyny
+### Kolik stromů Pravidelného háje můžeme spatřit zvenku?
+#### Pokyny
 -	Zvolte jazyk a prostředí dle preference – C++ / C# / Java / Python / Rust / JavaScript
 -	Napište program, který
 	  -	Načte data ze standardního vstupu (STDIN)
