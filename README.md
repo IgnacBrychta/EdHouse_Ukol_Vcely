@@ -3,7 +3,6 @@
 ### Stáž 2023 - Zachraň Včelku Máju!
 Božínku! Včelka Mája a celé její společenstvo včel přišli o domov! Musíš jí a nespočtu jejích včelích sourozenců pomoci najít vhodné místo pro stavbu nového úlu. Naštestí nemusíš hledat v celém širém kraji. Včelkám se totiž zamlouvá místo zvané Pravidelný háj, kde jsou stromy vysázeny v pravidelné mřížce. Tvým úkolem je zjistit, zda je Pravidelný háj pro včelstvo bezpečný. Máju zajíma kolik stromů Pravidelného háje je možné spatřit z jeho vnějšku, díváme-li se výhradně podél řad, či sloupců. 
 Mapování Pravidelného háje je pro včelky hračka. Rozletí se do všech směrů a nezbývá než počkat co nám povědí. Aby Ti Mája mohla dobře vysvětlit jak máš postupovat, nakreslila ti v mezičase nejdříve malou mapu jako příklad:
-Příklad
 
 |   | A | B | C | D | E |
 |---|---|---|---|---|---|
@@ -11,7 +10,7 @@ Příklad
 | b | 2 | 5 | 5 | 1 | 2 |
 | c | 6 | 5 | 3 | 3 | 2 |
 | d | 3 | 3 | 5 | 4 | 9 |
-| e | 3 | 5 | 3 | 9 | 0 
+| e | 3 | 5 | 3 | 9 | 0 |
 
 Každý strom je reprezentován jednou číslicí, jejíž hodnota odpovída výšce stromu, kde 0 je nejmenší a 9 je nejvyšší
 Strom je viditelný pokud jsou všechny ostatní stromy mezi ním a okrajem Pravidelného háje kratší. Uvažujte pouze stromy ve stejné řadě, nebo sloupci. Zjednodušeně řečeno: dívejte se pouze nahoru, dolů, doleva nebo doprava směrem od daného stromu.
